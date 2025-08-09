@@ -1,0 +1,4 @@
+*.zip
+finances-bbdd/*
+application.properties
+*.vscode/
