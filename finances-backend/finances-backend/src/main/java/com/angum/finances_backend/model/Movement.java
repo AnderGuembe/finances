@@ -31,6 +31,7 @@ public class Movement {
 	@JoinColumn(name="category_id", nullable=false)
 	private Category category; 
 	
+	@Column(name="isDeposit", nullable=false)
 	private Boolean isDeposit;
 	
 	public Movement() {
