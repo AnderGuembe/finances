@@ -1,0 +1,25 @@
+<div class="dashboard-container">
+  <mat-grid-list cols="2" gutterSize="20px">
+    <mat-grid-tile>
+      <mat-card class="income-card">
+          <mat-card-header>
+              <mat-card-title>📈 Incomes</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+              <app-movement-list [isDeposit]="true"></app-movement-list>
+          </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-card class="expense-card">
+          <mat-card-header>
+              <mat-card-title>📉 Expenses</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+              <app-movement-list [isDeposit]="false"></app-movement-list>
+          </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

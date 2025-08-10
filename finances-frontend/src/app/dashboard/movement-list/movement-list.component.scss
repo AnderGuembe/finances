@@ -1,0 +1,16 @@
+.table-container {
+    max-height: 650px;
+    overflow: auto;
+    width: 850px;
+}
+
+th {
+    max-width: 150px;
+}
+
+.sticky-paginator {
+    position: sticky;
+    bottom: 0;
+    background: white;
+    z-index: 100;
+}
