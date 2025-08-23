@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>{{ getTitle() }}</h2>
+<mat-dialog-content>
+    <form 
+        [formGroup]="addMovementForm" 
+        class="add-movement-form-grid" 
+        id="addMovementForm">
+        <div class="grid-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <input matInput name="description" formControlName="description" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Amount</mat-label>
+                <input matInput type="number" name="amount" formControlName="amount" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" name="date" formControlName="date" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Category</mat-label>
+                <mat-select name="category" formControlName="category" required>
+                    <mat-option *ngFor="let category of categories$ | async" [value]="category.id">
+                        {{ category.description_en | capitalize }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close title="Close">
+        <mat-icon aria-label="Icon-button with a close icon">close</mat-icon>
+    </button>
+    <button mat-icon-button type="submit" [disabled]="addMovementForm.invalid" title="Add Movement" (click)="addMovement()">
+        <mat-icon aria-label="Icon-button with a check icon">check</mat-icon>
+    </button>
+</mat-dialog-actions>

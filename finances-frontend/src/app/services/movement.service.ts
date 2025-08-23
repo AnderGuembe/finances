@@ -22,4 +22,8 @@ export class MovementService {
     httpParams = httpParams.set('isDeposit', isDeposit.toString());
     return this.http.get<Page<Movement>>(`/api/movement`, { params: httpParams });
   }
+
+  createMovement(movement: Movement): Observable<Movement> {
+    return this.http.post<Movement>('/api/movement', movement);
+  }
 }

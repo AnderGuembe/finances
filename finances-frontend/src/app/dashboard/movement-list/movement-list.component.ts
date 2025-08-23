@@ -8,12 +8,14 @@ import { MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { Pageable, SORT_DATE_DESC } from '../../model/page.model';
 import { map, Observable } from 'rxjs';
+import { CapitalizePipe } from '../../pipes/capitalize.pipe';
 
 @Component({
   selector: 'app-movement-list',
   standalone: true,
   imports: [CommonModule,
-    MatTableModule, MatPaginatorModule],
+    MatTableModule, MatPaginatorModule,
+    CapitalizePipe],
   templateUrl: './movement-list.component.html',
   styleUrl: './movement-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

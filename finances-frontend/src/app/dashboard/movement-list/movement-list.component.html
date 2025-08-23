@@ -6,7 +6,7 @@
         <!-- Description Column -->
         <ng-container matColumnDef="description">
           <th mat-header-cell *matHeaderCellDef>Description</th>
-          <td mat-cell *matCellDef="let movement">{{ movement.description }}</td>
+          <td mat-cell *matCellDef="let movement">{{ movement.description | capitalize }}</td>
         </ng-container>
 
         <!-- Amount Column -->
@@ -24,7 +24,7 @@
         <!-- Category Column -->
         <ng-container matColumnDef="category">
           <th mat-header-cell *matHeaderCellDef>Category</th>
-          <td mat-cell *matCellDef="let movement">{{ movement.category.description_es }}</td>
+          <td mat-cell *matCellDef="let movement">{{ movement.category.description_es | capitalize }}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

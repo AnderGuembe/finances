@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,6 +13,7 @@ export const appConfig: ApplicationConfig = {
       HttpClientModule,
       BrowserAnimationsModule
     ),
-    { provide: LOCALE_ID, useValue: 'es-ES' }
+    { provide: LOCALE_ID, useValue: 'es-ES' },
+    provideNativeDateAdapter(),
   ],
 };
