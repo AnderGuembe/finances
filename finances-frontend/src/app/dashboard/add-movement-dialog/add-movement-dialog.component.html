@@ -6,6 +6,15 @@
         id="addMovementForm">
         <div class="grid-container">
             <mat-form-field appearance="fill">
+                <mat-label>Category</mat-label>
+                <mat-select name="category" formControlName="category" required>
+                    <mat-option *ngFor="let category of categories$ | async" [value]="category.id">
+                        {{ category.description_en | capitalize }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
                 <mat-label>Description</mat-label>
                 <input matInput name="description" formControlName="description" required>
             </mat-form-field>
@@ -20,15 +29,6 @@
                 <input matInput [matDatepicker]="picker" name="date" formControlName="date" required>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill">
-                <mat-label>Category</mat-label>
-                <mat-select name="category" formControlName="category" required>
-                    <mat-option *ngFor="let category of categories$ | async" [value]="category.id">
-                        {{ category.description_en | capitalize }}
-                    </mat-option>
-                </mat-select>
             </mat-form-field>
         </div>
     </form>

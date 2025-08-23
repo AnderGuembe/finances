@@ -31,10 +31,10 @@ export class AddMovementDialogComponent {
   categories$!: Observable<Category[]>;
 
   addMovementForm: FormGroup = new FormGroup({
-    description: new FormControl('a', Validators.required),
-    amount: new FormControl(1, [Validators.required, Validators.min(0)]),
+    description: new FormControl('', Validators.required),
+    amount: new FormControl('', [Validators.required, Validators.min(0)]),
     date: new FormControl(new Date(), Validators.required),
-    category: new FormControl(1, Validators.required)
+    category: new FormControl('', Validators.required)
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: { isDeposit: boolean },
