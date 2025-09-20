@@ -8,6 +8,6 @@ import com.angum.finances_backend.model.Movement;
 
 public interface MovementRepository extends JpaRepository<Movement, Long> {
 	
-	public Page<Movement> findByIsDeposit(Boolean isDeposit, Pageable pageable);
+	public Page<Movement> findByIsIncome(Boolean isIncome, Pageable pageable);
 
 }

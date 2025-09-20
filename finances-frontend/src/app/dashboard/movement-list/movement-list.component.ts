@@ -34,7 +34,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class MovementListComponent implements OnInit {
   @Input()
-  isDeposit!: boolean;
+  isIncome!: boolean;
 
   dataSource$!: Observable<Movement[]>;
 
@@ -60,10 +60,10 @@ export class MovementListComponent implements OnInit {
 
   addMovement(): void {
     this.dialog
-      .open(AddMovementDialogComponent, { data: { isDeposit: this.isDeposit } })
+      .open(AddMovementDialogComponent, { data: { isIncome: this.isIncome } })
       .afterClosed()
       .subscribe((movementCreated) => {
-        console.log(movementCreated);
+        this.loadMovements();
       });
   }
 
@@ -74,7 +74,7 @@ export class MovementListComponent implements OnInit {
       sort: SORT_DATE_DESC,
     };
     this.dataSource$ = this.movementService
-      .getMovements(pageable, this.isDeposit)
+      .getMovements(pageable, this.isIncome)
       .pipe(
         map((data) => {
           this.totalElements = data.page.totalElements;

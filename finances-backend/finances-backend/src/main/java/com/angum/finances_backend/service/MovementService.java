@@ -20,8 +20,8 @@ public class MovementService {
 		return this.movementRepository.save(movement);
 	}
 	
-	public Page<Movement> getMovements(Boolean isDeposit, Pageable pageable) {
-		return this.movementRepository.findByIsDeposit(isDeposit, pageable);
+	public Page<Movement> getMovements(Boolean isIncome, Pageable pageable) {
+		return this.movementRepository.findByIsIncome(isIncome, pageable);
 	}
 	
 	public Page<Movement> getMovements(Pageable pageable) {

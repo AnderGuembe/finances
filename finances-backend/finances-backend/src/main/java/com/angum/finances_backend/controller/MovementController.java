@@ -31,8 +31,8 @@ public class MovementController {
 	}
 	
 	@GetMapping("")
-	public PagedModel<Movement> getMovements(Pageable pageable, @RequestParam(required = false) Optional<Boolean> isDeposit) {
-		Page<Movement> movements = isDeposit
+	public PagedModel<Movement> getMovements(Pageable pageable, @RequestParam(required = false) Optional<Boolean> isIncome) {
+		Page<Movement> movements = isIncome
 				.map(d -> this.movementService.getMovements(d, pageable))
 				.orElse(this.movementService.getMovements(pageable));
 		return new PagedModel<>(movements);

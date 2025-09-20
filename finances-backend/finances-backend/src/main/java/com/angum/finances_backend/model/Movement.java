@@ -31,8 +31,8 @@ public class Movement {
 	@JoinColumn(name="category_id", nullable=false)
 	private Category category; 
 	
-	@Column(name="isDeposit", nullable=false)
-	private Boolean isDeposit;
+	@Column(name="isIncome", nullable=false)
+	private Boolean isIncome;
 	
 	public Movement() {
 		
@@ -78,12 +78,12 @@ public class Movement {
 		this.category = category;
 	}
 
-	public Boolean getIsDeposit() {
-		return isDeposit;
+	public Boolean getIsIncome() {
+		return isIncome;
 	}
 
-	public void setIsDeposit(Boolean isDeposit) {
-		this.isDeposit = isDeposit;
+	public void setIsIncome(Boolean isIncome) {
+		this.isIncome = isIncome;
 	}
 	
 	

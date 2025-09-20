@@ -5,6 +5,6 @@ export interface Movement {
     amount: number,
     date: Date,
     description: string,
-    isDeposit: boolean,
+    isIncome: boolean,
     category: Category
 }

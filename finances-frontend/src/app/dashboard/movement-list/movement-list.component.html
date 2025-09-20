@@ -1,5 +1,5 @@
-<mat-card class="income-card">
-  @if( isDeposit ) {
+<mat-card [ngClass]="isIncome ? 'income-card' : 'expense-card'">
+@if( isIncome ) {
   <mat-card-header class="dashboard-header">
     <mat-card-title>📈 Incomes</mat-card-title>
     <button mat-raised-button color="primary" (click)="addMovement()">Add Income</button>

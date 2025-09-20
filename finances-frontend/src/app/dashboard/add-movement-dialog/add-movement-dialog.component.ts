@@ -37,7 +37,7 @@ export class AddMovementDialogComponent {
     category: new FormControl('', Validators.required)
   });
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { isDeposit: boolean },
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { isIncome: boolean },
     private readonly categoryService: CategoryService,
     private readonly movementService: MovementService,
     private readonly dialogRef: MatDialogRef<AddMovementDialogComponent>) {
@@ -45,14 +45,14 @@ export class AddMovementDialogComponent {
   }
 
   getTitle(): string {
-    return this.data.isDeposit ? 'Add Income' : 'Add Expense';
+    return this.data.isIncome ? 'Add Income' : 'Add Expense';
   }
 
   addMovement(): void {
     if (this.addMovementForm.valid) {
       const params: Movement = {...this.addMovementForm.value,
         category: { id: this.addMovementForm.value.category},
-        isDeposit: this.data.isDeposit
+        isIncome: this.data.isIncome
       };
       this.movementService.createMovement(params as Movement).subscribe(a => {
         this.dialogRef.close(a);

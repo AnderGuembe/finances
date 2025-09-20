@@ -11,7 +11,7 @@ export class MovementService {
 
   constructor(private readonly http: HttpClient) { }
 
-  getMovements(pageable: Pageable, isDeposit: boolean): Observable<Page<Movement>> {
+  getMovements(pageable: Pageable, isIncome: boolean): Observable<Page<Movement>> {
      let httpParams = new HttpParams();
 
     Object.entries(pageable).forEach(([key, value]) => {
@@ -19,7 +19,7 @@ export class MovementService {
         httpParams = httpParams.set(key, value);
       }
     });
-    httpParams = httpParams.set('isDeposit', isDeposit.toString());
+    httpParams = httpParams.set('isIncome', isIncome.toString());
     return this.http.get<Page<Movement>>(`/api/movement`, { params: httpParams });
   }
 
