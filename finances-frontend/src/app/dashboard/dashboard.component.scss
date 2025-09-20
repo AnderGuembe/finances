@@ -1,25 +1,3 @@
 .dashboard-container {
   padding: 20px;
 }
-
-mat-card {
-  padding: 0;
-}
-
-mat-card-header {
-  background-color: #f5f5f5;
-  padding: 10px 16px;
-}
-
-.income-card mat-card-header {
-  border-left: 5px solid #4caf50;
-}
-
-.expense-card mat-card-header {
-  border-left: 5px solid #f44336;
-}
-
-.dashboard-header {
-  display: flex;
-  justify-content: space-between;
-}

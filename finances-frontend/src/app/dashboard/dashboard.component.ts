@@ -19,24 +19,4 @@ import { AddMovementDialogComponent } from './add-movement-dialog/add-movement-d
 export class DashboardComponent {
 
   constructor(private readonly dialog: MatDialog ) {}
-
-  addIncome(): void {
-    this.dialog
-      .open(AddMovementDialogComponent, { data: { isDeposit: true } })
-      .afterClosed()
-      .subscribe((movementCreated) => {
-        console.log(movementCreated);
-      });
-  }
-
-  addExpense(): void {
-    this.dialog
-      .open(AddMovementDialogComponent, { data: { isDeposit: false } })
-      .afterClosed()
-      .subscribe((movementCreated) => {
-        if (movementCreated) {
-          // TODO: Update the movement list
-        }
-      });
-  }
 }

@@ -1,44 +1,57 @@
-@if (dataSource$ | async; as dataSource) { 
-  <div class="table-container">
-    <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource">
+<mat-card class="income-card">
+  @if( isDeposit ) {
+  <mat-card-header class="dashboard-header">
+    <mat-card-title>📈 Incomes</mat-card-title>
+    <button mat-raised-button color="primary" (click)="addMovement()">Add Income</button>
+  </mat-card-header>
+  } @else {
+  <mat-card-header class="dashboard-header">
+    <mat-card-title>📉 Expenses</mat-card-title>
+    <button mat-raised-button color="primary" (click)="addMovement()">Add Expense</button>
+  </mat-card-header>
+  }
 
-        <!-- Description Column -->
-        <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef>Description</th>
-          <td mat-cell *matCellDef="let movement">{{ movement.description | capitalize }}</td>
-        </ng-container>
+  <mat-card-content>
 
-        <!-- Amount Column -->
-        <ng-container matColumnDef="amount">
-          <th mat-header-cell *matHeaderCellDef>Amount</th>
-          <td mat-cell *matCellDef="let movement">{{ movement.amount | currency:'EUR':'symbol':'1.2-2':'es-ES' }}</td>
-        </ng-container>
+    @if (dataSource$ | async; as dataSource) {
+    <div class="table-container">
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
 
-        <!-- Date Column -->
-        <ng-container matColumnDef="date">
-          <th mat-header-cell *matHeaderCellDef>Date</th>
-          <td mat-cell *matCellDef="let movement">{{ movement.date | date:'dd/MM/yyyy' }}</td>
-        </ng-container>
+          <!-- Description Column -->
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let movement">{{ movement.description | capitalize }}</td>
+          </ng-container>
 
-        <!-- Category Column -->
-        <ng-container matColumnDef="category">
-          <th mat-header-cell *matHeaderCellDef>Category</th>
-          <td mat-cell *matCellDef="let movement">{{ movement.category.description_es | capitalize }}</td>
-        </ng-container>
+          <!-- Amount Column -->
+          <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef>Amount</th>
+            <td mat-cell *matCellDef="let movement">{{ movement.amount | currency:'EUR':'symbol':'1.2-2':'es-ES' }}</td>
+          </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+          <!-- Date Column -->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let movement">{{ movement.date | date:'dd/MM/yyyy' }}</td>
+          </ng-container>
 
-      <mat-paginator
-        class="sticky-paginator"
-        [length]="totalElements"
-        [pageSize]="pageSize"
-        [pageIndex]="currentPage"
-        [pageSizeOptions]="[5, 10, 20]"
-        (page)="onPageChange($event)">
-      </mat-paginator>
+          <!-- Category Column -->
+          <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef>Category</th>
+            <td mat-cell *matCellDef="let movement">{{ movement.category.description_es | capitalize }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator class="sticky-paginator" [length]="totalElements" [pageSize]="pageSize" [pageIndex]="currentPage"
+          [pageSizeOptions]="[5, 10, 20]" (page)="onPageChange($event)">
+        </mat-paginator>
+      </div>
     </div>
-  </div>
-}
+    }
+
+  </mat-card-content>
+</mat-card>
